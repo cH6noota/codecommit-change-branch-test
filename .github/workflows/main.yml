@@ -19,4 +19,5 @@ jobs:
         cd ..
         pwd
         mkdir test
-        ls
+        echo "${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}"
+
