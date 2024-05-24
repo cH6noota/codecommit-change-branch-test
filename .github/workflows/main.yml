@@ -17,5 +17,4 @@ jobs:
         ls -a
         cd ..
         pwd
-        mkdir test
         ls
