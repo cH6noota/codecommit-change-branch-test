@@ -10,6 +10,7 @@ on:
 jobs:
   mainPush:
     name: "sample"
+    runs-on: ubuntu-latest
     steps:
     - name: Echo Branch
       run: |
@@ -17,4 +18,5 @@ jobs:
         ls -a
         cd ..
         pwd
+        mkdir test
         ls
