@@ -9,13 +9,13 @@ on:
 
 jobs:
   mainPush:
-    name: "TestWorkFLow Echo"
-    runs-on: ubuntu-latest
+    name: "sample"
     steps:
     - name: Echo Branch
       run: |
         pwd
-        ls
+        ls -a
         cd ..
         pwd
+        mkidr test
         ls
