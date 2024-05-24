@@ -15,6 +15,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Push to CodeCommit (Mirroring)
+      run: |
+        echo ${{ secrets.IAM_ROLE_ARN }}
+
     - name: Configure AWS
       uses: aws-actions/configure-aws-credentials@v4
       with:
