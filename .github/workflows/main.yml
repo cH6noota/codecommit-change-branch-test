@@ -14,13 +14,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      
+
     - name: Echo Branch
       run: |
-        pwd
-        ls -a
         cd ..
-        pwd
+        echo "--------------------"
         mkdir test
-        echo "${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}"
+        echo "${GITHUB_REPOSITORY_OWNER}"
+        echo "--------------------"
+        ls
 
