@@ -15,12 +15,21 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Configure AWS
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: ${{ secrets.IAM_ROLE_ARN }} # ここにGitHub Secretsに保存した変数名が入ります。
+        role-session-name: codecommit-oidc 
+        aws-region: ap-northeast-1
+    - name: Push to CodeCommit (Mirroring)
+      run: |
+        git checkout -b hoge
+        git config --global credential.helper '!aws codecommit credential-helper $@'
+        git config --global credential.UseHttpPath true
+        git remote add codecommit https://git-codecommit.${{ env.AWS_REGION }}.amazonaws.com/v1/repos/${{ env.REPOSITORY_NAME }}
+        git push --mirror codecommit
+
     - name: Echo Branch
       run: |
-        cd ..
-        echo "--------------------"
-        mkdir test
-        echo "${GITHUB_REPOSITORY_OWNER}"
-        echo "--------------------"
-        ls
+        git checkout 
 
