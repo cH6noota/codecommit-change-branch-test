@@ -1,1 +1,19 @@
 
+name: "TestWorkFlow"
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  mainPush:
+    name: "TestWorkFLow Echo"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Echo Branch
+      run: |
+        ls
+        echo "Branch：${{ GITHUB_REF_NAME }}"
+        cd ..
