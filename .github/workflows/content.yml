@@ -1,11 +1,12 @@
 
-name: "mainFlow"
+name: "contentFlow"
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
+    paths:
+      - content
 
 jobs:
   mainPush:
@@ -24,17 +25,13 @@ jobs:
       with:
         role-to-assume: ${{ secrets.IAM_ROLE_ARN }} # ここにGitHub Secretsに保存した変数名が入ります。
         aws-region: ap-northeast-1
-    - name: Push to CodeCommit (Main)
-      run: |
-        git config --global credential.helper '!aws codecommit credential-helper $@'
-        git config --global credential.UseHttpPath true
-        git remote add codecommit https://git-codecommit.${{ env.AWS_REGION }}.amazonaws.com/v1/repos/change-branch-test
-        git push codecommit main
-
     - name: Push to CodeCommit (Content)
       run: |
         git config --global credential.helper '!aws codecommit credential-helper $@'
         git config --global credential.UseHttpPath true
         git remote add codecommit https://git-codecommit.${{ env.AWS_REGION }}.amazonaws.com/v1/repos/change-branch-test
+        git checkout -b content
+        git push codecommit content
+
         
 
