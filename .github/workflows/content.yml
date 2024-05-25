@@ -10,7 +10,7 @@ on:
 
 jobs:
   mainPush:
-    name: "sample"
+    name: "content"
     runs-on: ubuntu-latest
     permissions:
       id-token: write

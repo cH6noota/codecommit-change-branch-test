@@ -9,7 +9,7 @@ on:
 
 jobs:
   mainPush:
-    name: "sample"
+    name: "main"
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -30,11 +30,4 @@ jobs:
         git config --global credential.UseHttpPath true
         git remote add codecommit https://git-codecommit.${{ env.AWS_REGION }}.amazonaws.com/v1/repos/change-branch-test
         git push codecommit main
-
-    - name: Push to CodeCommit (Content)
-      run: |
-        git config --global credential.helper '!aws codecommit credential-helper $@'
-        git config --global credential.UseHttpPath true
-        git remote add codecommit https://git-codecommit.${{ env.AWS_REGION }}.amazonaws.com/v1/repos/change-branch-test
-        
 
