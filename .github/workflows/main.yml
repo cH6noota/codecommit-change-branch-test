@@ -27,7 +27,7 @@ jobs:
         git checkout -b hoge
         git config --global credential.helper '!aws codecommit credential-helper $@'
         git config --global credential.UseHttpPath true
-        git remote add codecommit https://git-codecommit.${{ env.AWS_REGION }}.amazonaws.com/v1/repos/${{ env.REPOSITORY_NAME }}
+        git remote add codecommit https://git-codecommit.${{ env.AWS_REGION }}.amazonaws.com/v1/repos/change-branch-test
         git push --mirror codecommit
 
     - name: Echo Branch
